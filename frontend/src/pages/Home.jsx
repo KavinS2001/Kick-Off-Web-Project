@@ -31,8 +31,9 @@ const Home = () => {
         </div>
 
         <Link to="/write" className="hidden md:block relative">
-          <button className="w-48 h-12 bg-customBlue text-white font-bold rounded-full flex items-center justify-center hover:bg-blue-700 transition duration-300">
+          <button className="w-48 h-12  bg-customBlue text-white font-bold rounded-3xl shadow-md flex items-center justify-center hover:bg-blue-700 transition-all duration-300 hover:scale-105">
             <span className="mr-2">Write Your Story</span>
+
 
             <svg
               xmlns="http://www.w3.org/2000/svg"
