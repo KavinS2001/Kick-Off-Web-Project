@@ -8,19 +8,19 @@ const {
   deletePost,
 } = require("../controllers/post.controller");
 
-// Route to create a new post
+// Create New Post
 router.post("/create", createPost);
 
-// Route to get all posts
+// Get all Posts
 router.get("/getAllPosts", getAllPosts);
 
-// Route to get a post by ID
+// Get Post by ID
 router.get("/:id", getPostById);
 
-// Route to update a post by ID
+//  Update  post 
 router.put("/:id", editPost);
 
-// Route to delete a post by ID
+//  Delete a post 
 router.delete("/:id", deletePost);
 
 module.exports = router;

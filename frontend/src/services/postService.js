@@ -78,13 +78,24 @@ export const postService = {
 
   addComment: async (commentData) => {
     try {
-      console.log(commentData)
+      //console.log(commentData)
       const response = await axios.post(`${baseUrl}/comments`, commentData);
-      console.log(response.data);
+      //console.log(response.data);
       return response;
     } catch (error) {
       console.error(error);
     }
   },
+
+  deleteComment: async (id) => {
+    try {
+      const response = await axios.delete(`${baseUrl}/comments/${id}`);
+      return response.data;
+    } catch (error) {
+      console.error("Error deleting comment:", error);
+      return null; // Handle errors properly
+    }
+  }
+  
 
 };

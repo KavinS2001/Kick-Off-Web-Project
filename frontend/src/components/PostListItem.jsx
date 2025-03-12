@@ -2,16 +2,16 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import moment from "moment";
 import { useUser } from "@clerk/clerk-react";
-import { FiEdit2, FiTrash2 } from "react-icons/fi"; // Import icons
+import { FiEdit2, FiTrash2 } from "react-icons/fi"; 
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { postService } from "../services/postService"; // Import postService
+import { postService } from "../services/postService";
 
 const PostListItem = ({ post, onDelete }) => {
-  const { user } = useUser(); // Get authenticated user
-  const isOwner = user && post.userId === user.id; // Check if logged-in user is the owner
+  const { user } = useUser(); 
+  const isOwner = user && post.userId === user.id; 
 
-  // Handle post deletion
+
   const handleDelete = async () => {
     const confirmDelete = window.confirm(
       "Are you sure you want to delete this post?"
@@ -21,7 +21,7 @@ const PostListItem = ({ post, onDelete }) => {
     try {
       await postService.deletePost(post._id);
       toast.success("Post deleted successfully!");
-      onDelete(post._id); // Remove from UI
+      onDelete(post._id); 
     } catch (error) {
       console.error("Failed to delete post:", error);
       toast.error("Failed to delete post. Please try again.");

@@ -1,6 +1,6 @@
 import { Schema } from "mongoose";
 import mongoose from "mongoose";
-
+// Not used in project
 const userSchema = new Schema(
   {
 /*     clerkUserId: {

@@ -26,6 +26,11 @@ const Comments = ({ postId }) => {
     }
   }, [postId]);
 
+  // Comment Delete Function
+  const handleCommentDelete = (deletedCommentId) => {
+    setComments((prevComments) => prevComments.filter((comment) => comment._id !== deletedCommentId));
+  };
+
   const handleCommentSubmit = async (e) => {
     e.preventDefault();
     if (!commentContent.trim()) {
@@ -57,7 +62,7 @@ const Comments = ({ postId }) => {
 
   return (
     <div className="flex flex-col gap-8 lg:w-4/5 mb-12 mt-5">
-      {/* Comment Form */}
+      {/* Comment */}
       {user && (
         <form
           onSubmit={handleCommentSubmit}
@@ -84,10 +89,12 @@ const Comments = ({ postId }) => {
           comments.map((comment) => (
             <Comment
               key={comment._id}
-              userName={comment.userName}
+              comment = {comment}
+              onDelete = {handleCommentDelete}
+/*               userName={comment.userName}
               content={comment.content}
               createdAt={comment.createdAt}
-              userImageUrl ={comment.userImageUrl}
+              userImageUrl ={comment.userImageUrl} */
             />
           ))
         ) : (

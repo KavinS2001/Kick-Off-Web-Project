@@ -2,18 +2,18 @@ const mongoose = require("mongoose");
 
 // Define the Post schema
 const postSchema = new mongoose.Schema({
-  userId: { type: String, required: true }, // User ID (from Clerk)
-  userName: { type: String, required: true }, // User's name
-  userEmail: { type: String, required: true }, // User's email
-  title: { type: String, required: true }, // Post title
-  category: { type: String, required: true }, // Category of the post
-  desc: { type: String, required: true }, // Short description of the post
-  content: { type: String, required: true }, // Post content (HTML content)
-  imageUrl: { type: String, required: true }, // URL of the uploaded image
-  createdAt: { type: Date, default: Date.now, required: false }, // Date the post was created
+  userId: { type: String, required: true }, // from clerk
+  userName: { type: String, required: true }, // from clerk
+  userEmail: { type: String, required: true }, // from clerk
+  title: { type: String, required: true }, 
+  category: { type: String, required: true }, 
+  desc: { type: String, required: true }, 
+  content: { type: String, required: true }, 
+  imageUrl: { type: String, required: true }, 
+  createdAt: { type: Date, default: Date.now, required: false }, 
 });
 
-// Create the Post model
+
 const Post = mongoose.model("Post", postSchema);
 
 module.exports = Post;
