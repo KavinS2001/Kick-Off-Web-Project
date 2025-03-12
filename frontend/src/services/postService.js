@@ -95,7 +95,18 @@ export const postService = {
       console.error("Error deleting comment:", error);
       return null; // Handle errors properly
     }
+  },
+  editComment: async (commentId, updatedData) => {
+    try {
+      const response = await axios.put(
+        `${baseUrl}/comments/${commentId}`,
+        updatedData
+      );
+      return response;
+    } catch (error) {
+      throw error;
+    }
   }
-  
 
 };
+

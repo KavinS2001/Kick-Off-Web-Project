@@ -41,7 +41,7 @@ const getCommentsByPostId = async (req, res) => {
 };
 
 const deleteCommentById = async (req, res) => {
-  const { commentId } = req.params; // Extracts commentId from URL
+  const { commentId } = req.params;
 
   try {
     const comment = await Comment.findById(commentId);
@@ -60,6 +60,43 @@ const deleteCommentById = async (req, res) => {
   }
 };
 
+const editCommentById = async (req, res) => {
 
-module.exports = { createComment, getCommentsByPostId, deleteCommentById };
+  const { commentId } = req.params; 
+  const { content } = req.body; 
+  const cleanCommentId = commentId.trim(); 
+  //console.log(commentId);
+  if (!content) {
+    return res.status(400).json({ message: "Content is Required" });
+  }
+
+  try {
+
+    const updatedComment = await Comment.findByIdAndUpdate(
+      cleanCommentId,
+      { content }, 
+      { new: true } 
+    );
+
+
+    if (!updatedComment) {
+      return res.status(404).json({ message: "Comment not found" });
+    }
+
+    res.status(200).json({
+      message: "Comment updated successfully",
+      comment: updatedComment,
+    });
+  } catch (err) {
+    console.error("Error updating comment:", err);
+    res.status(500).json({
+      message: "Failed to update comment",
+      error: err.message,
+    });
+  }
+};
+
+
+
+module.exports = { createComment, getCommentsByPostId, deleteCommentById, editCommentById };
 

@@ -1,10 +1,11 @@
 import Image from "./Image";
+import { useState } from "react";
 import moment from "moment";
 import { useUser } from "@clerk/clerk-react";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
-import { FiTrash2 } from "react-icons/fi";
-import { postService } from "../services/postService";
+import { FiEdit2, FiTrash2 } from "react-icons/fi";
+import { commentServices } from "../services/commentServices";
 
 const Comment = ({
   /* userName, content, createdAt, userImageUrl */ comment,
@@ -12,9 +13,30 @@ const Comment = ({
 }) => {
   const { user } = useUser();
   const isOwner = user && comment.userId === user.id;
-  console.log("User:", user);
-  console.log("Comment:", comment);
-  console.log("Is Owner:", isOwner);
+
+  //console.log("User:", user);
+  //console.log("Comment:", comment);
+  //console.log("Is Owner:", isOwner);
+
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedContent, setEditedContent] = useState(comment.content);
+
+  // Toggle edit mode
+  const handleEditClick = () => {
+    setIsEditing(true);
+  };
+  const handleSave = async () => {
+    try {
+      const response =await commentServices.editComment(comment._id, { content: editedContent });
+      toast.success("Comment updated successfully!");
+      //console.log(response.data);
+      comment.content = response.data.comment.content;
+      setIsEditing(false); 
+    } catch (err) {
+      console.error("Failed to update comment:", err);
+      toast.error("Failed to update comment. Please try again.");
+    }
+  };
 
   const handleDelete = async () => {
     const confirmDelete = window.confirm(
@@ -23,7 +45,7 @@ const Comment = ({
     if (!confirmDelete) return;
 
     try {
-      await postService.deleteComment(comment._id);
+      await commentServices.deleteComment(comment._id);
       toast.success("Comment deleted successfully!");
       onDelete(comment._id);
     } catch (err) {
@@ -36,14 +58,25 @@ const Comment = ({
     <div className="relative p-4 bg-slate-50 rounded-xl mb-8 hover:shadow-xl transition-shadow duration-300 border border-gray-200">
       {/* Only for Owner */}
       {isOwner && (
-        <div className="absolute top-6 right-6">
+        <div className="absolute bottom-6 right-6 flex gap-6 ">
+          <button
+            onClick={handleEditClick}
+            className="text-customBlue hover:text-yellow-500 transition-all"
+            title="Edit Comment"
+          >
+            <FiEdit2
+              size={24}
+              className="hover:scale-110 transition-transform"
+            />
+          </button>
+
           <button
             onClick={handleDelete}
             className="text-red-500 hover:text-red-900 transition-all"
             title="Delete Post"
           >
             <FiTrash2
-              size={32}
+              size={24}
               className="hover:scale-110 transition-transform"
             />
           </button>
@@ -60,7 +93,7 @@ const Comment = ({
           />
         ) : (
           <Image
-            src="userImg.jpeg" // Fallback image if userImageUrl is not available
+            src="userImg.jpeg"
             alt="User Profile"
             className="w-10 h-10 rounded-full object-cover"
             w="40"
@@ -70,14 +103,32 @@ const Comment = ({
         <span className="font-bold text-lg">{comment.userName}</span>
         <span className="text-sm font-medium text-gray-500 ml-2">
           {moment(comment.createdAt).fromNow()}{" "}
-          {/* Time ago (e.g., 5 minutes ago) */}
         </span>
         <span className="text-sm font-medium text-gray-500">
-          {new Date(comment.createdAt).toLocaleDateString()} {/* Format date */}
+          {new Date(comment.createdAt).toLocaleDateString()}
         </span>
       </div>
       <div className="mt-4">
-        <p className="text-md text-gray-950">{comment.content}</p>
+        {isEditing ? (
+          <div>
+            <textarea
+              value={editedContent}
+              onChange={(e) => setEditedContent(e.target.value)}
+              rows="2"
+              className="w-full border p-2 rounded"
+            />
+            <div className="mt-4">
+              <button
+                onClick={handleSave}
+                className="bg-blue-500 text-white font-bold rounded-full flex px-4 py-2 items-center justify-center hover:bg-customBlue transition duration-300"
+              >
+                Update
+              </button>
+            </div>
+          </div>
+        ) : (
+          <p className="text-md text-gray-950">{comment.content}</p>
+        )}
       </div>
     </div>
   );

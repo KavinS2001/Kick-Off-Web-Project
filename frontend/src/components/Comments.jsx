@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
-import { postService } from "../services/postService";
+import { commentServices } from "../services/commentServices";
 import { useUser } from "@clerk/clerk-react";
 import  Comment  from "./Comment"
 
@@ -12,7 +12,7 @@ const Comments = ({ postId }) => {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const response = await postService.getCommentsByPostId(postId);
+        const response = await commentServices.getCommentsByPostId(postId);
         console.log("Fetched Comments:", response.data);
         setComments(response.data);
       } catch (error) {
@@ -47,7 +47,7 @@ const Comments = ({ postId }) => {
         content: commentContent,
       };
 
-      const response = await postService.addComment(newComment);
+      const response = await commentServices.addComment(newComment);
       console.log("New Comment Response:", response.data);
       setComments((prevComments) => [response.data, ...prevComments]);
       //console.log(comments)
