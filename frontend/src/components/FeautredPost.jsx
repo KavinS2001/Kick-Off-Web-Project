@@ -29,15 +29,15 @@ const FeaturedPosts = () => {
 
   return (
     <div className="mt-8 flex flex-col lg:flex-row gap-8">
-      {/* Left Side - Featured Post */}
-      <div className="w-full lg:w-1/2 flex flex-col gap-4">
+      {/* Left big post */}
+      <div className="w-full lg:w-1/2 flex flex-col gap-4 shadow-2xl hover:shadow-xl transition-shadow duration-300 border border-gray-200">
         {/* image */}
         {featured[0].imageUrl && (
           <Link to={`/${featured[0]._id}`} className="block">
             <img
               src={featured[0].imageUrl}
               alt={featured[0].title}
-              className=" object-cover rounded-3xl"
+              className=" object-contains  rounded-lg transition-transform duration-300 group-hover:scale-105 shadow-md"
               width="895"
               
             />
