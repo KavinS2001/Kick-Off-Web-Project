@@ -72,41 +72,7 @@ export const postService = {
   },
 
 
-  getCommentsByPostId: async (postId) => {
-    return await axios.get(`${baseUrl}/comments/${postId}`);
-  },
 
-  addComment: async (commentData) => {
-    try {
-      //console.log(commentData)
-      const response = await axios.post(`${baseUrl}/comments`, commentData);
-      //console.log(response.data);
-      return response;
-    } catch (error) {
-      console.error(error);
-    }
-  },
-
-  deleteComment: async (id) => {
-    try {
-      const response = await axios.delete(`${baseUrl}/comments/${id}`);
-      return response.data;
-    } catch (error) {
-      console.error("Error deleting comment:", error);
-      return null; // Handle errors properly
-    }
-  },
-  editComment: async (commentId, updatedData) => {
-    try {
-      const response = await axios.put(
-        `${baseUrl}/comments/${commentId}`,
-        updatedData
-      );
-      return response;
-    } catch (error) {
-      throw error;
-    }
-  }
 
 };
 
