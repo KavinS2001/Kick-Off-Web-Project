@@ -55,15 +55,15 @@ const MainPost = () => {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
-      {/* Header */}
+    
+      <div className="border-t-2 border-customBlue mb-8 "></div> 
       <div className="mb-8 relative">
         <h1 className="text-4xl font-bold text-gray-900 mb-4">{title}</h1>
         <p className="text-lg text-gray-600">{desc}</p>
 
-        {/* Edit & Delete Buttons (Only visible to the owner) */}
         {isOwner && (
           <div className="absolute top-10   right-2 md:top-8 md:-right-20 flex gap-3 md:gap-5">
-            {/* Edit Button */}
+      
             <Link
               to={`/edit/${id}`}
               className="text-blue-500 hover:text-yellow-500 transition-all"
@@ -72,7 +72,6 @@ const MainPost = () => {
               <FiEdit2 size={28} />
             </Link>
 
-            {/* Delete Button */}
             <button
               onClick={handleDelete}
               className="text-red-500 hover:text-red-700 transition-all"
@@ -93,7 +92,7 @@ const MainPost = () => {
         />
       </div>
 
-      {/* Blog Content */}
+      {/*  Content */}
       <div className="prose prose-lg text-gray-800 leading-relaxed mb-6">
         <div dangerouslySetInnerHTML={{ __html: content }} />
       </div>

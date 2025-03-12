@@ -169,8 +169,8 @@ const EditPost = () => {
             <option value="General">General</option>
             <option value="Untold Stories">Untold Stories</option>
             <option value="Tactics">Tactics</option>
-            <option value="Game Reads">Game Reads</option>
-            <option value="Legendary Matches">Legendary Matches</option>
+            <option value="Transfers">Transfers</option>
+            <option value="Legendery Matches">Legendary Matches</option>
             <option value="Rising Stars">Rising Stars</option>
           </select>
         </div>

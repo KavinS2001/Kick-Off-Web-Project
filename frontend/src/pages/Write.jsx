@@ -27,7 +27,7 @@ const Write = () => {
 
   if (!user) {
     return (
-      <div className="h-[calc(100vh-64px)] md:h-[calc(100vh-80px)] flex items-center justify-center bg">
+      <div className=" flex items-center justify-center bg">
         <p className="text-xl font-bold text-center">
           You need to be signed in to write a post.
         </p>
@@ -121,7 +121,8 @@ const Write = () => {
   };
 
   return (
-    <div className="h-[calc(100vh-64px)] md:h-[calc(100vh-80px)] flex flex-col gap-6 mb-24">
+    <div className=" flex flex-col gap-6 mb-6 mt-4" >
+        <div className="border-t-2 border-customBlue "></div> 
       <h1 className="text-xl font-bold">Create a New Post</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-6 flex-1 mb-6">
         {/* Image Upload */}
@@ -169,8 +170,8 @@ const Write = () => {
             <option value="General">General</option>
             <option value="Untold Stories">Untold Stories</option>
             <option value="Tactics">Tactics</option>
-            <option value="Game Reads">Game Reads</option>
-            <option value="Legendary Matches">Legendary Matches</option>
+            <option value="Transfers">Transfers</option>
+            <option value="Legendery Matches">Legendary Matches</option>
             <option value="Rising Stars">Rising Stars</option>
           </select>
         </div>

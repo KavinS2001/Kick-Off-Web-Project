@@ -9,7 +9,7 @@ const Footer = () => {
 
   return (
     <div className="w-full  py-8 px-4 md:px-8 lg:px-16">
-       <div className="border-t-2 border-customBlue mb-8"></div> 
+       <div className="border-t-2 border-customBlue mb-8 "></div> 
       <div className="flex flex-col md:flex-row items-center justify-between gap-4">
         <Link
           to="/"

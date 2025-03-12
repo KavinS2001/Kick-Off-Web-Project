@@ -24,13 +24,13 @@ const Categories = () => {
           Tactics
         </Link>
         <Link
-          to="/posts?cat=Game Reads"
+          to="/posts?cat=Transfers"
           className="hover:bg-customBlue  hover:text-white  rounded-full px-4 py-2 border-2 border-customBlue hover:border-white"
         >
-          Game Reads
+          Transfers
         </Link>
         <Link
-          to="/posts?cat=Legendery Matches "
+          to="/posts?cat=Legendery Matches"
           className="hover:bg-customBlue  hover:text-white  rounded-full px-4 py-2 border-2 border-customBlue hover:border-white"
         >
          Legendery Matches 
