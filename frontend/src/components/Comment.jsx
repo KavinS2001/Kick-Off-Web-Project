@@ -21,7 +21,7 @@ const Comment = ({
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState(comment.content);
 
-  // Toggle edit mode
+  
   const handleEditClick = () => {
     setIsEditing(true);
   };
