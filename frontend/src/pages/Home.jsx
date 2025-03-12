@@ -6,18 +6,18 @@ import PostList from "../components/PostList";
 const Home = () => {
   return (
     <div className="mt-4 flex flex-col gap-4">
-      {/* Navigation */}
       <div className="flex gap-4">
         <Link className=" text-customBlue font-medium" to="/">
           Home
         </Link>
         <span>&gt;</span>
 
-        <Link to="/posts"><span className="text-customBlue font-medium">Blogs and Stories</span></Link>
+        <Link to="/posts">
+          <span className="text-customBlue font-medium">Blogs and Stories</span>
+        </Link>
       </div>
-      {/* Intro */}
+
       <div className="flex items-center justify-between">
-        {/* titles */}
         <div className="">
           <h1 className="text-customBlue text-3xl md:text-5xl lg:text-6xl font-extrabold">
             KickOff: Where Football Stories Come to Life!
@@ -29,7 +29,7 @@ const Home = () => {
             goal at a time.
           </p>
         </div>
-        {/* animated button */}
+
         <Link to="/write" className="hidden md:block relative">
           <button className="w-48 h-12 bg-customBlue text-white font-bold rounded-full flex items-center justify-center hover:bg-blue-700 transition duration-300">
             <span className="mr-2">Write Your Story</span>
@@ -50,13 +50,13 @@ const Home = () => {
         </Link>
       </div>
 
-      
       <Categories />
       <FeaturedPosts />
 
-      <div className="">
+      <div className="mt-5">
+        <div className="border-t-2 border-customBlue "></div>
         <h1 className="my-8 py-2 text-3xl lg:text-5xl text-customBlue font-bold">
-          Recent Post
+          Recent Posts
         </h1>
         <PostList />
       </div>

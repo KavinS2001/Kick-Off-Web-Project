@@ -29,8 +29,8 @@ const PostListItem = ({ post, onDelete }) => {
   };
 
   return (
-    <div className="relative flex gap-6 p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-200">
-      {/* Only for Owner */}
+    <div className="relative flex flex-col md:flex-row gap-6 p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-200">
+  
       {isOwner && (
         <div className="absolute bottom-6 right-6 flex gap-12">
           {/* Edit Button */}
@@ -59,7 +59,7 @@ const PostListItem = ({ post, onDelete }) => {
         </div>
       )}
 
-      <div className="w-1/3 relative group">
+      <div className=" w-full md:w-1/3 relative group">
         <Link to={`/${post._id}`}>
           <img
             src={post.imageUrl}
@@ -69,8 +69,8 @@ const PostListItem = ({ post, onDelete }) => {
         </Link>
       </div>
 
-      {/* Post Content */}
-      <div className="w-2/3 flex flex-col justify-between">
+
+      <div className="w-full md:w-2/3 flex flex-col gap-4 justify-between">
         <h2 className="text-3xl font-bold text-gray-900 hover:text-blue-600 transition-colors">
           <Link to={`/${post._id}`}>{post.title}</Link>
         </h2>
@@ -90,7 +90,6 @@ const PostListItem = ({ post, onDelete }) => {
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
 
-        {/* Read More Button */}
         <Link
           to={`/${post._id}`}
           className="mt-4 self-start px-4 py-2 text-sm font-bold text-white bg-customBlue rounded-lg shadow-md hover:bg-blue-700 transition-all hover:scale-105"

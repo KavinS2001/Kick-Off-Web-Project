@@ -10,6 +10,7 @@ import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
 import MainPost from "./pages/MainPost.jsx";
 import EditPost from "./pages/EditPost.jsx";
+import Footer from "./components/Footer.jsx";
 
 const App = () => {
   return (
@@ -45,6 +46,7 @@ const App = () => {
             }
           />
         </Routes>
+        <Footer/>
       </div>
     </BrowserRouter>
   );
