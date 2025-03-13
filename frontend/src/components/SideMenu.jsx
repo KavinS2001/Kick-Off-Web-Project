@@ -2,7 +2,7 @@ import React from "react";
 
 const SideMenu = ({ setCategory }) => {
   const handleCategoryChange = (category) => {
-    setCategory(category); // Update the category in parent component
+    setCategory(category); 
   };
 
   return (

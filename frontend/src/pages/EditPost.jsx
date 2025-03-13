@@ -130,7 +130,7 @@ const EditPost = () => {
   };
 
   return (
-    <div className="h-[calc(100vh-64px)] md:h-[calc(100vh-80px)] flex flex-col gap-6">
+    <div className=" flex flex-col gap-6">
       <h1 className="text-xl font-bold">Edit Post</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-6 flex-1 mb-6">
         <label className="w-max p-2 shadow-md rounded-xl text-sm text-gray-500 bg-white cursor-pointer">
@@ -147,7 +147,7 @@ const EditPost = () => {
         )}
 
         <input
-          className="text-2xl font-medium text-gray-500 placeholder-black bg-transparent outline-none"
+          className="text-2xl font-extrabold text-gray-900 placeholder-black bg-transparent outline-none"
           type="text"
           placeholder="Title"
           name="title"

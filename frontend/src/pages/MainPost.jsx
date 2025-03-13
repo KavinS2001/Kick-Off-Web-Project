@@ -15,12 +15,12 @@ const MainPost = () => {
   const { user } = useUser(); // Get authenticated user
   const [postData, setPostData] = useState(null);
 
-  /*   useEffect(() => {
+    useEffect(() => {
     if (id) {
       postService.incrementViews(id);
     }
   }, []); 
-   */
+  
 
   useEffect(() => {
     const fetchPostData = async () => {
@@ -44,7 +44,7 @@ const MainPost = () => {
   const { title, desc, imageUrl, content, userId, userName, createdAt, views } =
     postData;
 
-  const isOwner = user && userId === user.id; // Check if the logged-in user is the owner
+  const isOwner = user && userId === user.id; 
 
   // Handle post deletion
   const handleDelete = async () => {
@@ -56,7 +56,7 @@ const MainPost = () => {
     try {
       await postService.deletePost(id);
       toast.success("Post deleted successfully!");
-      navigate("/"); // Redirect to homepage after deletion
+      navigate("/"); 
     } catch (error) {
       console.error("Failed to delete post:", error);
       toast.error("Failed to delete post. Please try again.");

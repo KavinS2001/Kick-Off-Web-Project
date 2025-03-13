@@ -11,6 +11,7 @@ import Register from "./pages/Register.jsx";
 import MainPost from "./pages/MainPost.jsx";
 import EditPost from "./pages/EditPost.jsx";
 import Footer from "./components/Footer.jsx";
+import TrendingPosts from "./pages/TrendingPage.jsx";
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/edit/:id" element={<EditPost />} />
+          <Route path="/trending" element ={<TrendingPosts/>}/>
 
           {/* Protect the write page */}
           <Route

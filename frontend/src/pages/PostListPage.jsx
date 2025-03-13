@@ -38,10 +38,10 @@ const PostListPage = () => {
       <div className="flex flex-col-reverse gap-8 md:flex-row justify-between">
         <div>
           
-          <PostList category={category} />
+          <PostList category={category} trending={false} />
         </div>
         <div className={`${open ? "block" : "hidden"} md:block`}>
-          <SideMenu setCategory={setCategory} />
+          <SideMenu setCategory={setCategory}  />
         </div>
       </div>
     </div>

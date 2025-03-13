@@ -136,7 +136,7 @@ const Write = () => {
           />
         </label>
 
-        {/* Show Preview */}
+        {/* Priview */}
         {image && (
           <img
             src={URL.createObjectURL(image)}
@@ -147,7 +147,7 @@ const Write = () => {
 
         {/* Title Input */}
         <input
-          className="text-2xl font-medium text-gray-500 placeholder-black bg-transparent outline-none"
+          className="text-2xl font-extrabold text-gray-900 placeholder-black bg-transparent outline-none"
           type="text"
           placeholder="Title"
           name="title"
@@ -176,7 +176,7 @@ const Write = () => {
           </select>
         </div>
 
-        {/* Short Description */}
+        {/* Short desc */}
         <textarea
           className="p-4 rounded-xl bg-white shadow-md"
           name="desc"
@@ -185,7 +185,7 @@ const Write = () => {
           onChange={handleChange}
         />
 
-        {/* Rich Text Editor */}
+        {/*  Text editor */}
         <ReactQuill
           theme="snow"
           className="flex-1 rounded-xl bg-white shadow-md min-h-[300px]"
@@ -195,7 +195,7 @@ const Write = () => {
           }
         />
 
-        {/* Submit Button */}
+        {/* Submit  */}
         <button
           type="submit"
           disabled={loading}
