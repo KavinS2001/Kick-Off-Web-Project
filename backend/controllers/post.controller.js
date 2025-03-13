@@ -120,6 +120,24 @@ const deletePost = async (req, res) => {
       .status(500)
       .json({ message: "Failed to delete post", error: err.message });
   }
+
+
 }
 
-module.exports = { createPost, getAllPosts, getPostById, editPost, deletePost };
+const incrementViews = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    await Post.findByIdAndUpdate(id, { $inc: { views: 1 } });
+    res.status(200).json({
+      message: "View count updated"
+    })
+  }
+  catch (err) {
+    res.status(500).json({ error: "Failed to update views" });
+  }
+}
+
+
+
+module.exports = { createPost, getAllPosts, getPostById, editPost, deletePost, incrementViews };

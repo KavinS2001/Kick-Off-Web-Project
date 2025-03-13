@@ -6,6 +6,7 @@ const {
   getPostById,
   editPost,
   deletePost,
+  incrementViews
 } = require("../controllers/post.controller");
 
 // Create New Post
@@ -22,5 +23,7 @@ router.put("/:id", editPost);
 
 //  Delete a post 
 router.delete("/:id", deletePost);
+
+router.put("/:id/views",incrementViews )
 
 module.exports = router;

@@ -71,6 +71,16 @@ export const postService = {
     }
   },
 
+  async incrementViews(id){
+    try {
+      await axios.put(`${baseUrl}${path}/${id}/views`);
+      
+    }
+    catch(err){
+      console.error("Error updating views:", error);
+    }
+  }
+
 
 
 

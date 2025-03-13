@@ -9,6 +9,7 @@ const postSchema = new mongoose.Schema({
   category: { type: String, required: true }, 
   desc: { type: String, required: true }, 
   content: { type: String, required: true }, 
+  views: { type: Number, default: 0, require:true },
   imageUrl: { type: String, required: true }, 
   createdAt: { type: Date, default: Date.now, required: false }, 
 });

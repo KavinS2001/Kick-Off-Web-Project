@@ -2,15 +2,16 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import moment from "moment";
 import { useUser } from "@clerk/clerk-react";
-import { FiEdit2, FiTrash2 } from "react-icons/fi"; 
+import { FiEdit2, FiTrash2 } from "react-icons/fi";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { postService } from "../services/postService";
+import { useEffect } from "react";
+import axios from "axios";
 
 const PostListItem = ({ post, onDelete }) => {
-  const { user } = useUser(); 
-  const isOwner = user && post.userId === user.id; 
-
+  const { user } = useUser();
+  const isOwner = user && post.userId === user.id;
 
   const handleDelete = async () => {
     const confirmDelete = window.confirm(
@@ -21,7 +22,7 @@ const PostListItem = ({ post, onDelete }) => {
     try {
       await postService.deletePost(post._id);
       toast.success("Post deleted successfully!");
-      onDelete(post._id); 
+      onDelete(post._id);
     } catch (error) {
       console.error("Failed to delete post:", error);
       toast.error("Failed to delete post. Please try again.");
@@ -30,7 +31,6 @@ const PostListItem = ({ post, onDelete }) => {
 
   return (
     <div className="relative flex flex-col md:flex-row gap-6 p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-200">
-  
       {isOwner && (
         <div className="absolute bottom-6 right-6 flex gap-12">
           {/* Edit Button */}
@@ -69,7 +69,6 @@ const PostListItem = ({ post, onDelete }) => {
         </Link>
       </div>
 
-
       <div className="w-full md:w-2/3 flex flex-col gap-4 justify-between">
         <h2 className="text-3xl font-bold text-gray-900 hover:text-blue-600 transition-colors">
           <Link to={`/${post._id}`}>{post.title}</Link>
@@ -81,10 +80,15 @@ const PostListItem = ({ post, onDelete }) => {
           on {moment(post.createdAt).format("Do MMMM YYYY")}
         </p>
 
+        <div className="flex items-center justify-between gap-12 text-gray-900 text-lg font-medium mt-2">
+          <span className="bg-gray-100 px-8 py-1 rounded-md border border-gray-400">
+            <span>Views{" "}: </span>
+            <span className="ml-5 font-bold">{Math.floor(post.views / 2)}</span>{" "}
+           
+          </span>
+        </div>
 
-        <p className="text-gray-900 font-medium text-xl">
-          {post.desc}
-        </p>
+        <p className="text-gray-900 font-medium text-xl">{post.desc}</p>
         <div
           className="text-gray-500  mt-3 line-clamp-6 overflow-hidden"
           dangerouslySetInnerHTML={{ __html: post.content }}
@@ -112,7 +116,7 @@ PostListItem.propTypes = {
     imageUrl: PropTypes.string.isRequired,
     createdAt: PropTypes.string.isRequired,
   }).isRequired,
-  onDelete: PropTypes.func.isRequired, 
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default PostListItem;
