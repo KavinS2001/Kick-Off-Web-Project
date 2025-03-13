@@ -1,44 +1,33 @@
 import { Link } from "react-router-dom";
 
-const Categories = () => {
+const Categories = ({ category }) => {
+
+
+  const getLinkClass = (catName) =>
+    category === catName
+      ? "bg-customBlue text-white rounded-full px-4 py-2 border-2 border-customBlue font-medium"
+      : "hover:bg-customBlue hover:text-white rounded-full px-4 py-2 border-2 border-customBlue hover:border-white font-medium";
+
   return (
     <div className="hidden md:flex bg-neutral-300 rounded-3xl xl:rounded-full p-4 shadow-lg items-center justify-center gap-2">
       {/* links */}
       <div className="flex flex-1 items-center justify-start gap-4 flex-wrap">
-        <Link
-          to="/posts"
-          className="bg-customBlue text-white rounded-full px-4 py-2"
-        >
+        <Link to="/posts" className={getLinkClass("")}>
           All Posts
         </Link>
-        <Link
-          to="/posts?cat=Untold Stories"
-          className="hover:bg-customBlue  hover:text-white rounded-full px-4 py-2 border-2 border-customBlue hover:border-white"
-        >
+        <Link to="/posts?cat=Untold Stories" className={getLinkClass("Untold Stories")}>
           Untold Stories
         </Link>
-        <Link
-          to="/posts?cat=Tactics"
-          className="hover:bg-customBlue  hover:text-white  rounded-full px-4 py-2 border-2 border-customBlue hover:border-white"
-        >
+        <Link to="/posts?cat=Tactics" className={getLinkClass("Tactics")}>
           Tactics
         </Link>
-        <Link
-          to="/posts?cat=Transfers"
-          className="hover:bg-customBlue  hover:text-white  rounded-full px-4 py-2 border-2 border-customBlue hover:border-white"
-        >
+        <Link to="/posts?cat=Transfers" className={getLinkClass("Transfers")}>
           Transfers
         </Link>
-        <Link
-          to="/posts?cat=Legendery Matches"
-          className="hover:bg-customBlue  hover:text-white  rounded-full px-4 py-2 border-2 border-customBlue hover:border-white"
-        >
-         Legendery Matches 
+        <Link to="/posts?cat=Legendery Matches" className={getLinkClass("Legendery Matches")}>
+          Legendary Matches
         </Link>
-        <Link
-          to="/posts?cat=Rising Stars"
-          className="hover:bg-customBlue hover:text-white  rounded-full px-4 py-2 border-2 border-customBlue hover:border-white"
-        >
+        <Link to="/posts?cat=Rising Stars" className={getLinkClass("Rising Stars")}>
           Rising Stars
         </Link>
       </div>

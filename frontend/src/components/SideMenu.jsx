@@ -11,10 +11,9 @@ const SideMenu = ({ setCategory }) => {
       <h1 className="mb-4 text-md text-black font-bold">Search</h1>
 
 
-      {/* Filter */}
       <h1 className="mt-8 mb-3 text-md text-black font-bold">Filter</h1>
       <div className="flex flex-col gap-2 text-sm">
-        {/* Radio buttons for sorting */}
+    
       </div>
 
       {/* Categories */}

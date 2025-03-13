@@ -51,7 +51,7 @@ const Home = () => {
         </Link>
       </div>
 
-      <Categories />
+      <Categories category={""} />
       <FeaturedPosts />
 
       <div className="mt-5">
